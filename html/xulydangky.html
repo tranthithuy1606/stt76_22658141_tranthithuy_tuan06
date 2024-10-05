@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xử lý Đăng Ký</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .result {
+            padding: 20px;
+            background-color: lightgreen;
+            display: inline-block;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Kết quả Đăng Ký</h2>
+    
+    <div class="result">
+        <p><strong>Họ tên:</strong> <span id="name"></span></p>
+        <p><strong>Mật khẩu:</strong> <span id="password"></span></p>
+    </div>
+
+    <script>
+        // Lấy tham số từ URL
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name');
+        const password = params.get('password');
+
+        // Hiển thị thông tin đã đăng ký
+        document.getElementById('name').innerText = name;
+        document.getElementById('password').innerText = password;
+    </script>
+
+</body>
+</html>

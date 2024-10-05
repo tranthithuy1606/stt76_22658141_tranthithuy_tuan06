@@ -1,0 +1,47 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn Loại Cafe</title>
+    <style>
+        #result {
+            color: red;
+        }
+       
+    </style>
+</head>
+<body>
+    <h3>Chọn loại cafe:</h3>
+    <form id="coffeeForm">
+        <input type="checkbox" id="trungNguyen" value="Trung Nguyen"> Trung Nguyen <br>
+        <input type="checkbox" id="meKong" value="Me Kong"> Me Kong <br>
+        <input type="checkbox" id="newLife" value="New Life"> New Life <br>
+        <input type="checkbox" id="oceanBlue" value="Ocean Blue"> Ocean Blue <br>
+        <input type="checkbox" id="blueSpace" value="Blue Space"> Blue Space <br>
+        <input type="checkbox" id="windows" value="Windows"> Windows <br><br>
+        <button type="button" onclick="showSelection()">Chọn</button>
+    </form>
+    
+    <p id="result"><b style="color: black;">Bạn chọn cafe:</b> </p>
+
+    <script>
+        function showSelection() {
+            // Get all checkbox elements
+            let checkboxes = document.querySelectorAll('#coffeeForm input[type="checkbox"]');
+            let selected = [];
+            
+            // Loop through the checkboxes and collect the checked ones
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selected.push(checkbox.value);
+                }
+            });
+
+            // Display the selected items
+            document.getElementById('result').innerHTML = 'Bạn chọn cafe: ' + selected.join(', ');
+        }
+    </script>
+
+</body>
+</html>

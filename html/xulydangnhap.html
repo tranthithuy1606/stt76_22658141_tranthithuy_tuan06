@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xử lý Đăng Nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .result {
+            padding: 20px;
+            background-color: lightblue;
+            display: inline-block;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Kết quả Đăng Nhập</h2>
+    
+    <div class="result">
+        <p><strong>UserName: </strong> <span id="username"></span></p>
+        <p><strong>PassWord:</strong> <span id="password"></span></p>
+    </div>
+
+    <script>
+        // Lấy tham số từ URL
+        const params = new URLSearchParams(window.location.search);
+        const username = params.get('username');
+        const password = params.get('password');
+
+        // Hiển thị thông tin đã đăng nhập
+        document.getElementById('username').innerText = username;
+        document.getElementById('password').innerText = password;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phép tính cơ bản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6ffe6;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2 style="text-align: center;">Phép tính cơ bản</h2>
+    <form id="calcForm">
+        <label>Nhập số thứ 1: <input type="text" id="num1" /></label><span class="error" id="error1">(*)</span><br/>
+        <label>Nhập số thứ 2: <input type="text" id="num2" /></label><span class="error" id="error2">(*)</span><br/>
+        
+        <button type="button" onclick="calculate('add')">Cộng</button>
+        <button type="button" onclick="calculate('subtract')">Trừ</button>
+        <button type="button" onclick="calculate('multiply')">Nhân</button>
+        <button type="button" onclick="calculate('divide')">Chia</button>
+        <button type="button" onclick="calculate('mod')">Chia dư</button>
+
+        <div class="result" id="result">Kết quả: </div>
+    </form>
+</div>
+
+<script>
+    // Hàm kiểm tra xem giá trị nhập vào có phải số hay không
+    function isNumber(value) {
+        return !isNaN(value) && value.trim() !== '';
+    }
+
+    function calculate(operation) {
+        // Lấy giá trị từ các ô input
+        let num1 = document.getElementById('num1').value;
+        let num2 = document.getElementById('num2').value;
+
+        // Lấy các phần tử hiển thị lỗi
+        let error1 = document.getElementById('error1');
+        let error2 = document.getElementById('error2');
+        
+        // Đặt lại lỗi
+        error1.style.visibility = 'hidden';
+        error2.style.visibility = 'hidden';
+
+        // Kiểm tra xem cả hai giá trị nhập vào có phải là số không
+        if (!isNumber(num1)) {
+            error1.style.visibility = 'visible';
+            return;
+        }
+        if (!isNumber(num2)) {
+            error2.style.visibility = 'visible';
+            return;
+        }
+
+        // Chuyển giá trị sang kiểu số
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+
+        let result;
+
+        // Thực hiện các phép tính dựa trên loại phép toán được chọn
+        switch (operation) {
+            case 'add':
+                result = num1 + num2;
+                break;
+            case 'subtract':
+                result = num1 - num2;
+                break;
+            case 'multiply':
+                result = num1 * num2;
+                break;
+            case 'divide':
+                if (num2 === 0) {
+                    result = "Không thể chia cho 0";
+                } else {
+                    result = num1 / num2;
+                }
+                break;
+            case 'mod':
+                if (num2 === 0) {
+                    result = "Không thể chia cho 0";
+                } else {
+                    result = num1 % num2;
+                }
+                break;
+            default:
+                result = "Phép tính không hợp lệ!";
+        }
+
+        // Hiển thị kết quả
+        document.getElementById('result').innerText = "Kết quả: " + result;
+    }
+</script>
+
+</body>
+</html>

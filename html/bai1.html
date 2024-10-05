@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 1</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse:separate ;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td{
+            padding: 10px;
+            
+        }
+       
+    </style>
+</head>
+<body>
+    <TAble>
+        <thead>
+            <tr>
+                <th colspan="3" style="color: rgb(251, 147, 164);">DANH SÁCH SINH VIÊN</th>
+            </tr>
+            <tr>
+                <th>MSSV</th>
+                <th>Tên</th>
+                <th>Lớp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="mssv"></td>
+                <td id="name"></td>
+                <td id="class"></td>
+            </tr>
+        </tbody>
+    </TAble>
+
+    <script>
+        var mssv = prompt ("Nhập mã số SV:");
+        var name = prompt ("Nhập họ tên:");
+        var studentClass = prompt ("Nhập lớp");
+
+        document.getElementById("mssv").innerText = mssv;
+        document.getElementById("name").innerText = name;
+        document.getElementById("class").innerText = studentClass;
+    </script>
+</body>
+</html>

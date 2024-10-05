@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bai 2d</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px auto  ;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #000;
+            max-width: 400px;
+        }
+        #output {
+            margin-top: 20px;
+        }
+        p{
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>FORM ĐỊNH DẠNG</h3> <br>
+        <form id="formatForm">
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label>Chọn:</label>
+            <input type="radio" id="background" name="format" value="background">
+            <label for="background">Background</label>
+            <input type="radio" id="font" name="format" value="font">
+            <label for="font">Font</label><br><br>
+
+            <label for="color">Chọn màu:</label>
+            <select id="color" name="color">
+                <option value="">Chọn màu ...</option>
+                <option value="red">Đỏ</option>
+                <option value="blue">Xanh Dương</option>
+                <option value="green">Xanh Lá</option>
+                <option value="yellow">Vàng</option>
+            </select><br><br>
+
+            <button type="button" onclick="applyFormat()">Đổi màu</button>
+            <button type="button" onclick="resetForm()">Cancel</button>
+        </form>
+        
+        <div id="output">
+            <p id="previewText">you can direct link the hyperlink with the file if you know the address but this is limited by the browser. eg. if pdf reader is installed on the client then the pdf will not be downloaded instead it will be shown.</p>
+        </div>
+    </div>
+
+    <script>
+        function applyFormat() {
+            // Get selected format (background or font)
+            let selectedFormat = document.querySelector('input[name="format"]:checked');
+            let selectedColor = document.getElementById("color").value;
+            let previewText = document.getElementById("previewText");
+
+            if (selectedFormat && selectedColor) {
+                if (selectedFormat.value === 'background') {
+                    // Change background color
+                    previewText.style.backgroundColor = selectedColor;
+                    previewText.style.color = ''; // Reset font color
+                } else if (selectedFormat.value === 'font') {
+                    // Change font color
+                    previewText.style.color = selectedColor;
+                    previewText.style.backgroundColor = ''; // Reset background color
+                }
+            } else {
+                alert("Vui lòng chọn định dạng và màu.");
+            }
+        }
+
+        function resetForm() {
+            // Clear selections and reset the preview text
+            document.getElementById("formatForm").reset();
+            let previewText = document.getElementById("previewText");
+            previewText.style.backgroundColor = '';
+            previewText.style.color = '';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow Image</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid;
+            padding-top: 5px;
+            width: 500px;
+            height: 350px;
+        }
+        img {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin: 5px;
+            padding: 5px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img id="slideshow" src="/img/b1.jpg" alt="Image slideshow">
+    <br>
+    <button onclick="startSlideshow()">Play</button>
+    <button onclick="stopSlideshow()">Stop</button>
+</div>
+
+<script>
+    let images = ['b1.jpg', 'b2.jpg', 'b3.jpg', 'b4.jpg', 'b5.jpg', 'b6.jpg', 'b7.jpg', 'b8.jpg', 'b9.jpg', 'b10.jpg'];
+    let currentIndex = 0;
+    let timer;
+
+    function showImage() {
+        // Update the src attribute of the img tag to display the next image
+        document.getElementById('slideshow').src = images[currentIndex];
+        // Move to the next image
+        currentIndex = (currentIndex + 1) % images.length;  // Loop back to the start
+        // Automatically change to the next image every 1 second
+        timer = setTimeout(showImage, 1000);
+    }
+
+    function startSlideshow() {
+        // Start the slideshow
+        showImage();
+    }
+
+    function stopSlideshow() {
+        // Stop the slideshow by clearing the timeout
+        clearTimeout(timer);
+    }
+</script>
+
+</body>
+</html>
